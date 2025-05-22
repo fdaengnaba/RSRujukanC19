@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.fdaengnaba.rsrujukanc19.R
 import id.fdaengnaba.rsrujukanc19.model.Hospital
+import id.fdaengnaba.rsrujukanc19.util.ImageFetcher
 
 class HospitalAdapter(private val hospitalList: List<Hospital>) :
         RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>() {
@@ -34,10 +35,15 @@ class HospitalAdapter(private val hospitalList: List<Hospital>) :
         holder.textName.text = hospital.name
         holder.textAddress.text = hospital.address
 
-        // Gunakan gambar placeholder, atau load pakai Glide
-        Glide.with(holder.itemView.context)
-            .load("https://via.placeholder.com/150")
-            .into(holder.imageHospital)
+        Thread {
+            val imageUrl = ImageFetcher.getImageUrlFromWikipedia(hospital.name)
+
+            (holder.itemView.context as? android.app.Activity)?.runOnUiThread {
+                Glide.with(holder.itemView.context)
+                    .load(imageUrl ?: "https://via.placeholder.com/150")
+                    .into(holder.imageHospital)
+            }
+        }.start()
     }
 
     override fun getItemCount(): Int = hospitalList.size
