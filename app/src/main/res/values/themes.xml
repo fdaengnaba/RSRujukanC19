@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.RSRujukanC19" parent = "Theme.Material3.DayNight.NoActionBar"><!-- Primary Color -->
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <item name="colorSecondary">#BDBDBD</item>
+        <item name="colorOnSecondary">#000000</item>
+
+        <item name="android:windowBackground">?android:colorBackground</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+</style>
+
+</resources>
