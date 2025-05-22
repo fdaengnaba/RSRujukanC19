@@ -11,7 +11,7 @@ object ImageFetcher {
             val client = OkHttpClient()
             val encodedTitle = hospitalName.replace(" ", "_")
             val url =
-                "https://en.wikipedia.org/api/rest_v1/page/summary/$encodedTitle"
+                "https://id.wikipedia.org/api/rest_v1/page/summary/$encodedTitle"
 
             val request = Request.Builder()
                 .url(url)
